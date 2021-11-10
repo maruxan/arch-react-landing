@@ -12,6 +12,8 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  const navLinkClassName = (isActive) => classes.navlink + ' ' + (isActive ? classes.active : '');
+
   return (
     <div className={classes.navbar}>
       <Link to="/home" className={classes.logo} onClick={() => setIsOpen(false)}>
@@ -22,17 +24,26 @@ export default function Navbar() {
       </button>
       <nav hidden={!isOpen}>
         <li>
-          <NavLink to="/portfolio" className={classes.navlink} onClick={() => setIsOpen(false)}>
+          <NavLink
+            to="/portfolio"
+            className={({ isActive }) => navLinkClassName(isActive)}
+            onClick={() => setIsOpen(false)}>
             Portfolio
           </NavLink>
         </li>
         <li>
-          <NavLink to="/about" className={classes.navlink} onClick={() => setIsOpen(false)}>
+          <NavLink
+            to="/about"
+            className={({ isActive }) => navLinkClassName(isActive)}
+            onClick={() => setIsOpen(false)}>
             About Us
           </NavLink>
         </li>
         <li>
-          <NavLink to="/contact" className={classes.navlink} onClick={() => setIsOpen(false)}>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => navLinkClassName(isActive)}
+            onClick={() => setIsOpen(false)}>
             Contact
           </NavLink>
         </li>
