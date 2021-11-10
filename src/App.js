@@ -6,9 +6,12 @@ import Portfolio from './pages/Portfolio';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
+import Navbar from './components/Navbar/Navbar';
+
 function App() {
   return (
     <Fragment>
+      <Navbar />
       <Routes>
         <Route exact path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
