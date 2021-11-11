@@ -7,6 +7,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 
 import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element="404" />
       </Routes>
+      <Footer />
     </Fragment>
   );
 }
