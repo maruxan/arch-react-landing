@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 
+import projects from '../../data/projects';
+import classes from './Home.module.css';
+
 import PageMarker from '../../components/PageMarker/PageMarker';
 import Banner from '../../components/Banner/Banner';
 import Cards from '../../components/Cards/Cards';
@@ -9,13 +12,8 @@ import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import Paragraph from '../../components/Paragraph/Paragraph';
 import Button from '../../components/Button/Button';
 
-import classes from './Home.module.css';
-import heroImg from '../../assets/images/home/desktop/image-hero-paramour.jpg';
 import welcomeImg from '../../assets/images/home/desktop/image-welcome.jpg';
 import teamImg from '../../assets/images/home/desktop/image-small-team.jpg';
-import delSolImg from '../../assets/images/portfolio/desktop/image-del-sol.jpg';
-import towerImg from '../../assets/images/portfolio/desktop/image-228b.jpg';
-import prototypeImg from '../../assets/images/portfolio/desktop/image-prototype.jpg';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -26,9 +24,9 @@ export default function Home() {
 
       <section className={classes.hero}>
         <Banner
-          bgImage={heroImg}
-          title="Project Paramour"
-          bodyText="Project made for an art museum near Southwest London. Project Paramour is a statement of bold, modern architecture."
+          bgImage={projects[0].image}
+          title={projects[0].name}
+          bodyText={projects[0].description}
           buttonHandler={() => navigate('/portfolio')}
           buttonText="See Our Porfolio"
         />
@@ -75,24 +73,15 @@ export default function Home() {
           <Button text="see all" onclick={() => navigate('/portfolio')} />
         </div>
         <Cards>
-          <ProjectCard
-            name="Project Del Sol"
-            subtitle="View All Projects"
-            img={delSolImg}
-            onclick={() => navigate('/portfolio')}
-          />
-          <ProjectCard
-            name="228B Tower"
-            subtitle="View All Projects"
-            img={towerImg}
-            onclick={() => navigate('/portfolio')}
-          />
-          <ProjectCard
-            name="Le Prototype"
-            subtitle="View All Projects"
-            img={prototypeImg}
-            onclick={() => navigate('/portfolio')}
-          />
+          {projects.slice(1, 4).map((project) => (
+            <ProjectCard
+              key={project.id}
+              name={project.name}
+              subtitle="View All Projects"
+              img={project.image}
+              onclick={() => navigate('/portfolio')}
+            />
+          ))}
         </Cards>
       </section>
     </main>
